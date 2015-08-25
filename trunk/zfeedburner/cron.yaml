@@ -1,0 +1,4 @@
+cron:
+- description: auto refresh and publish
+  url: /refreshfeed/
+  schedule: every 15 minutes

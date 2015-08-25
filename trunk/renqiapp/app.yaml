@@ -1,0 +1,46 @@
+application: renqiapp
+version: beta0
+runtime: python
+api_version: 1
+
+handlers:
+- url: /favicon\.ico
+  static_files: static/images/favicon.ico
+  upload: static/images/favicon.ico
+  mime_type: image/x-icon
+
+- url: /bookmark(/.*)?
+  script: bookmark/bookmarkhandler.py
+  
+- url: /wsjnews(/.*)?
+  script: wsjnews/newshandler.py
+  
+- url: /static
+  static_dir: static
+  
+- url: /zipme
+  script: zipme.py
+  
+- url: /pipes(/.*)?
+  script: pipes/handler.py
+  
+- url: /addPipe(/.*)?
+  script: pipes/handler.py
+  
+- url: /publish(/.*)?
+  script: pipes/handler.py
+  
+- url: /refreshfeed(/.*)?
+  script: pipes/handler.py
+  login: admin
+  
+- url: /dealFeedEntry(/.*)?
+  script: pipes/handler.py
+  login: admin
+  
+- url: /pipesEntryUpdate(/.*)?
+  script: pipes/handler.py
+  login: admin
+  
+- url: /.*
+  script: helloworld.py

@@ -1,0 +1,4 @@
+cron:
+- description: auto publish
+  url: /refreshfeed/allpipes
+  schedule: every 12 hours

@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head profile="http://gmpg.org/xfn/11">
+    <title>bookmark</title>
+    <link rel="stylesheet" href="/static/style.css" type="text/css" media="screen" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
+    <script src='/static/js/jquery.blockUI.js' type="text/javascript"></script>
+    <script type="text/javascript">
+    function analyze_news(){
+        $.blockUI({ message: '<h3 id="bmsg"><img src="/static/images/busy.gif" /> analyze data now...</h3>' });
+        var news_urls_text = $("textarea#news_urls").val();
+        alert(news_urls_text);
+        $.post("/wsjnews/analyze",{"urls":news_urls_text}, function(json){
+              $('#bmsg').html(json+'<br/><input type="button" value="Ok" onclick="$.unblockUI()"></input>');
+              $('.blockUI').css('cursor','');
+            });
+     }
+	</script>
+
+
+</head>
+<body>
+<div id="container">
+    <div class="wrap">
+        <h2>analyze news</h2>
+        <div class="grid">
+            <textarea rows="5" cols="120" id="news_urls" name="news_urls"></textarea>
+			<input type="button" class="runbtn" value="analyze" onclick="analyze_news();" />
+        </div>
+    </div>
+</div>
+</div>
+<br />
+
+
+</body>
+</html>

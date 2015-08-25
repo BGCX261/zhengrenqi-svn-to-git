@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head profile="http://gmpg.org/xfn/11">
+    <title>bookmark</title>
+    <link rel="stylesheet" href="/static/style.css" type="text/css" media="screen" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+// <![CDATA[
+function SplitFile()
+{
+    var file = $("#upfile").val();
+    if(!file){
+        return false;
+    }
+    file = file.replace(/\\/g, "/");
+    var parts = file.split("/");
+    var filename = parts[parts.length - 1];
+
+    var bits = filename.split(".");
+    var ext = bits[bits.length - 1];
+
+    $("#filename").val(filename);
+    $("#fileext").val(ext.toLowerCase());
+    return true;
+}
+// ]]>
+</script>
+
+</head>
+<body>
+<div id="container">
+	<div class="wrap">
+		<h2>Upload a file</h2>
+		<!-- {{{ file upload -->
+		<form action="/bookmark/upload" method="post" enctype="multipart/form-data">
+		    <input type="file" id="upfile" name="upfile" />
+		    <input type="hidden" id="filename" name="filename" />
+		    <input type="hidden" id="fileext" name="fileext" />
+		    <input type="submit" value="upload" onclick="return SplitFile();" />
+		</form>
+		<!-- }}} -->
+	</div>
+</div>
+<br />
+
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+queue:
+- name: default
+  rate: 1/s
+- name: feed
+  rate: 1/s
+  bucket_size: 5
+- name: add-feed
+  rate: 2/s
+  bucket_size: 10
